@@ -6,10 +6,16 @@
   "author": "xiaokyo <904656778@qq.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
@@ -21,6 +27,7 @@
     "core-js": "^3.1.4",
     "cross-env": "^5.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.1",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2",
@@ -31,7 +38,7 @@
     "pro": "cross-env NODE_ENV=production webpack --config ./webpack/client.js --progress",
     "server": "cross-env NODE_ENV=production webpack --config ./webpack/server.js --progress --watch",
     "build": "yarn pro && yarn server",
-    "start": "node ./dist/server/server.js"
+    "start": "nodemon ./dist/server/server.js"
   },
   "browserslist": "> 0.25%, not dead"
 }

@@ -1,24 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Provider as ReduxProvider} from 'react-redux';
 
 //components
+import Layout from '../app/layout';
 import Home from '../app/home';
 import Notification from '../app/notification';
 
-const App = () => {
-  return (
-    <div>
-      <Router>
-        <ul>
-          <li><Link to="/">home</Link></li>
-          <li><Link to="/notification">notification</Link></li>
-        </ul>
-        <Route exact={true} path="/" component={Home} />
-        <Route exact={true} path="/notification" component={Notification} />
-      </Router>
-    </div>
-  );
-};
+//store
+import createStore from '../redux';
 
-ReactDOM.render (<App />, document.getElementById ('app'));
+const store = createStore (window.REDUX_DATA ? window.REDUX_DATA : {});
+
+const jsx = (
+  <ReduxProvider store={store}>
+    <Router>
+      <Layout />
+    </Router>
+  </ReduxProvider>
+);
+
+const app = document.getElementById ('app');
+__CLIENT__ ? ReactDOM.render (jsx, app) : ReactDOM.hydrate (jsx, app);
