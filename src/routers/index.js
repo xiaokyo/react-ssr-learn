@@ -1,5 +1,6 @@
 import Home from '../app/home';
 import Notification from '../app/notification';
+import Error from '../app/error';
 
 //redux
 import {fetchData, TimeoutData} from '../redux';
@@ -9,18 +10,17 @@ export default [
     path: '/',
     component: Home,
     exact: true,
-    loadData: TimeoutData,
+    loadData: fetchData,
   },
   {
     path: '/notification',
     exact: true,
     component: Notification,
-    loadData: fetchData,
+    loadData: TimeoutData,
   },
   {
-    path: '/list',
+    path: '*',
     exact: true,
-    component: Notification,
-    loadData: TimeoutData,
+    component: Error,
   },
 ];

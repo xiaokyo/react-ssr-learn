@@ -32,18 +32,13 @@ app.get ('*', async (req, res) => {
 
   dispatch (initializeSession ());
 
-  console.log ('----start', req.path);
   let currentRoute = null;
-
   routers.some (route => {
     const match = matchPath (req.path, route);
-    console.log (match);
+    // console.log (match);
     if (match) currentRoute = route;
-    // if (match) promises.push (route.loadData (store, match));
     return match;
   });
-
-  console.log ('----end');
 
   if (currentRoute.loadData) {
     await currentRoute.loadData () (dispatch);
