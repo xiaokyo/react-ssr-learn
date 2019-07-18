@@ -11,7 +11,7 @@ import Notification from '../app/notification';
 //store
 import createStore from '../redux';
 
-const store = createStore (window.REDUX_DATA ? window.REDUX_DATA : {});
+const store = createStore (window.REDUX_DATA);
 
 const jsx = (
   <ReduxProvider store={store}>
