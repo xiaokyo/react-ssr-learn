@@ -25,6 +25,7 @@ app.use (bodyParser.urlencoded ({limit: '20mb', extended: true}));
 app.use (cookieParser ());
 
 app.use ('/', express.static ('./dist'));
+app.use ('/', express.static ('./public'));
 
 const htmlTemplate = fs.readFileSync ('./dist/app.html', 'utf-8');
 

@@ -1,7 +1,7 @@
 {
   "name": "private-msg",
   "version": "1.0.0",
-  "main": "./src/app/index.js",
+  "main": "./src/client/index.js",
   "repository": "https://github.com/xiaokyo/privateChat.git",
   "author": "xiaokyo <904656778@qq.com>",
   "license": "MIT",
