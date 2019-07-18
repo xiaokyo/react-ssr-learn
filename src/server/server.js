@@ -1,8 +1,8 @@
 import express from 'express';
+import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import fs from 'fs';
-import path from 'path';
 
 //react
 import React from 'react';
@@ -20,13 +20,17 @@ import Home from '../app/home';
 import Notification from '../app/notification';
 
 const app = express ();
+
+app.use (helmet ()); //阻挡一些web的安全隐患
 app.use (bodyParser.json ({limit: '20mb'}));
 app.use (bodyParser.urlencoded ({limit: '20mb', extended: true}));
 app.use (cookieParser ());
 
+// 静态资源
 app.use ('/', express.static ('./dist'));
 app.use ('/', express.static ('./public'));
 
+// 读取模板页面
 const htmlTemplate = fs.readFileSync ('./dist/app.html', 'utf-8');
 
 app.get ('*', async (req, res) => {
